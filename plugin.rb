@@ -66,7 +66,7 @@ after_initialize do
       return true if super
       return false unless self.custom_fields.has_key?("import_pass")
 
-      if SaltedMD5.check_hash(password, self.custom_fields.has_key?("import_pass"))
+      if SaltedMD5.check_hash(password, self.custom_fields["import_pass"])
         self.password = password
         self.custom_fields.delete("import_pass")
         return save
